@@ -1,0 +1,40 @@
+{
+  "name": "xby-mermaid-doc",
+  "version": "1.0.0",
+  "description": "Mermaid Doc MCP Server是一个用于生成Mermaid文档的服务器，提供列出可用图表和检索特定图表文档的功能。",
+  "keywords": [
+    "xby-mermaid-doc",
+    "xby",
+    "mermaid",
+    "doc",
+    "Mermaid",
+    "文档",
+    "生成",
+    "服务"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "files": [
+    "dist",
+    "cordis.patch.yml"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xby_skill/xby-mermaid-doc.git"
+  },
+  "homepage": "",
+  "bugs": {
+    "url": "https://github.com/xby_skill/xby-mermaid-doc/issues"
+  },
+  "author": "",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}
