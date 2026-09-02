@@ -106,15 +106,7 @@ export function apply(ctx: Context, config?: Record<string, any>) {
   ctx.tools.register(
     defineTool({
       name: 'get_diagram_doc',
-      description: '
-Retrieve the documentation content for a specific Mermaid diagram.
-
-Args:
-    diagram_name (DiagramType): The name of the diagram. Possible values are: \'architecture\', \'block\', \'c4\', \'classDiagram\', \'entityRelationshipDiagram\', \'examples\', \'flowchart\', \'gantt\', \'gitgraph\', \'kanban\', \'mindmap\', \'packet\', \'pie\', \'quadrantChart\', \'radar\', \'requirementDiagram\', \'sankey\', \'sequenceDiagram\', \'stateDiagram\', \'timeline\', \'userJourney\', \'xyChart\', \'zenuml\'. These are case sensitive strings.
-
-Returns:
-    str: The documentation content as a string, or an empty string if the diagram is not found.
-',
+      description: '\nRetrieve the documentation content for a specific Mermaid diagram.\n\nArgs:\n    diagram_name (DiagramType): The name of the diagram. Possible values are: \'architecture\', \'block\', \'c4\', \'classDiagram\', \'entityRelationshipDiagram\', \'examples\', \'flowchart\', \'gantt\', \'gitgraph\', \'kanban\', \'mindmap\', \'packet\', \'pie\', \'quadrantChart\', \'radar\', \'requirementDiagram\', \'sankey\', \'sequenceDiagram\', \'stateDiagram\', \'timeline\', \'userJourney\', \'xyChart\', \'zenuml\'. These are case sensitive strings.\n\nReturns:\n    str: The documentation content as a string, or an empty string if the diagram is not found.\n',
       parameters: {
       diagram_name: {
           type: 'null',

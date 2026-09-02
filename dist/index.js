@@ -97,30 +97,27 @@ export function apply(ctx, config) {
     // ── 工具 1: get_diagram_doc
     ctx.tools.register(defineTool({
         name: 'get_diagram_doc',
-        description: ',
-        Retrieve, the, documentation, content, for: a, specific, Mermaid, diagram, : .
-            Args,
-        name, of, the, diagram, : .Possible, values, are: , 'architecture\', \'block\', \'c4\', \'classDiagram\', \'entityRelationshipDiagram\', \'examples\', \'flowchart\', \'gantt\', \'gitgraph\', \'kanban\', \'mindmap\', \'packet\', \'pie\', \'quadrantChart\', \'radar\', \'requirementDiagram\', \'sankey\', \'sequenceDiagram\', \'stateDiagram\', \'timeline\', \'userJourney\', \'xyChart\', \'zenuml\'. These are case sensitive strings.: Returns,
-        str: The, documentation, content, as, a, string, or, an, empty, string, if: the, diagram, is, not, found, : .
-        ,
-        ',: parameters,
-    }, {
-        diagram_name: {
-            type: 'null',
-            required: true,
-            description: 'null',
+        description: '\nRetrieve the documentation content for a specific Mermaid diagram.\n\nArgs:\n    diagram_name (DiagramType): The name of the diagram. Possible values are: \'architecture\', \'block\', \'c4\', \'classDiagram\', \'entityRelationshipDiagram\', \'examples\', \'flowchart\', \'gantt\', \'gitgraph\', \'kanban\', \'mindmap\', \'packet\', \'pie\', \'quadrantChart\', \'radar\', \'requirementDiagram\', \'sankey\', \'sequenceDiagram\', \'stateDiagram\', \'timeline\', \'userJourney\', \'xyChart\', \'zenuml\'. These are case sensitive strings.\n\nReturns:\n    str: The documentation content as a string, or an empty string if the diagram is not found.\n',
+        parameters: {
+            diagram_name: {
+                type: 'null',
+                required: true,
+                description: 'null',
+            },
         },
-    }, output, {
-        schema: { type: 'string' },
-        render: (_args, value) => [{ type: 'text', text: value }],
-    }, async, execute(args, Record), {
-        const: result = await callApi(cfg, '1777419067505667', 'get_diagram_doc', args),
-        if(, result) { }, : .success
-    }), {
-        throw: new Error(result.message)
-    });
-    return result.text;
+        output: {
+            schema: { type: 'string' },
+            render: (_args, value) => [{ type: 'text', text: value }],
+        },
+        async execute(args) {
+            const result = await callApi(cfg, '1777419067505667', 'get_diagram_doc', args);
+            if (!result.success) {
+                throw new Error(result.message);
+            }
+            return result.text;
+        },
+    }));
+    console.log(`[${name}] 插件已加载，注册了 2 个工具`);
 }
-console.log(`[${name}] 插件已加载，注册了 2 个工具`);
 // 支持对象形式导出
 export default { name, inject, apply };
